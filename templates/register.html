@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <title>Add Venue</title> -->
+    <link rel="stylesheet" href="/static/venues.css" />
+    <style>
+    form {
+            margin: 10px auto;
+            width: 600px;
+            padding: 1em;
+            border: 1px solid #CCC;
+            border-radius: 1em;
+        }
+        form div + div {
+            margin-top: 1em;
+        }
+        label {
+            display: inline-block;
+            width: 100px;
+            height:1.5em;
+            text-align: right;
+        }
+        input, textarea {
+            font: 1em sans-serif;
+            width: 300px;
+            height:1.5em;
+            box-sizing: border-box;
+            border: 1px solid #999;
+        }
+        textarea {
+            vertical-align: top;
+            height: 5em;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="menu">
+        <ul>
+            <li class="w3-bar-item w3-button"><a href="/homepage"> Home </a></li>
+            <li class="w3-bar-item w3-button"><a href="/venue">Add Venue</a></li>
+            <li class="w3-bar-item w3-button"><a href="/links">Add Surrounds</a></li>
+            <li class="w3-bar-item w3-button"><a href="/help">Help</a></li>
+        </ul>
+    </div>
+
+    <center><a style="text-align: center;font-size: 3em;">Register</a></center>
+    
+    <form action="/reg" method="post" enctype = "multipart/form-data">
+        {% if notallinput %}
+        <center><p style="color: red">Please fill in all information!</p></center>
+        {% endif %}
+        <div>
+            <label for="name"><b>Username</b></label>
+            <input type="text" id="email" name="email">
+        </div>
+        <div>
+            <label for="location"><b>Password</b></label>
+            <input type="password" id="psw" name="psw">
+        </div>
+
+        <div class="button">
+            <button type="submit">Register</button>
+        </div>
+    </form>
+</body>
+</html>

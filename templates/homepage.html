@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link rel="stylesheet" href="/static/venues.css" />
+</head>
+<body>
+    <a name="top"></a>
+    <div class="menu">
+        <ul>
+            <li class="w3-bar-item w3-button"><a href="/homepage"> Home </a></li>
+            <li class="w3-bar-item w3-button"><a href="/venue">Add Venue</a></li>
+            <li class="w3-bar-item w3-button"><a href="/links">Add Surrounds</a></li>
+            <li class="w3-bar-item w3-button"><a href="/help">Help</a></li>
+            <li class="w3-bar-item w3-button"><a href="/logout">Log out</a></li>
+        </ul>
+    </div>
+    <div>
+        <image src="/static/images/nus.jpeg"></image>
+    </div>
+    <div class = "HEAD">
+        <h1> Venues </h1>
+    </div>
+    <div class="venue-list">
+        {% for line in venues %}
+        <div class="venue">
+            <div class="venue-image">
+                <image src="/static/images/{{ line['Image'] }}" />
+            </div>           
+            <div class="venue-text">
+                <div class="venue-name">
+                    <a href="{{ url_for('show_detail', venue=line['Name'])}}">{{ line["Name"] }}</a>
+                </div>
+                <div class="venue-location">{{ line["Location"] }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <center>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.13056584848!2d103.78448063381744!3d1.3055184847648598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da1a56784202d9%3A0x488d08d6c1f88d6b!2z5paw5Yqg5Z2h5Zu956uL5aSn5a2m!5e0!3m2!1szh-CN!2ssg!4v1647183762291!5m2!1szh-CN!2ssg" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </center>
+    <div>
+        <br></br>
+    </div>
+    <center>
+    <div class="menu">
+        <ul>
+            <p>Follow Us:</p>
+            <li class="w3-bar-item w3-button"><a href="https://www.facebook.com/nus.singapore/">Facebook</a></li>
+            <li class="w3-bar-item w3-button"><a href="https://www.instagram.com/nus_singapore/">Instagram</a></li>
+        </ul>	
+    </div>
+    </center>
+
+    <div>
+        <br></br>
+    </div>
+
+    <div class = "BTT">
+            <a href="#top">Back to top</a>
+    </div>
+
+    <script src='{{ url_for("static", filename="home.js") }}'></script>
+</body>
+</html>
+

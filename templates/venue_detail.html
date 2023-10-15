@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link rel="stylesheet" href="/static/venues.css" />
+</head>
+<body>
+    
+    <div class="menu">
+        <ul>
+            <li class="w3-bar-item w3-button"><a href="/homepage"> Home </a></li>
+            <li class="w3-bar-item w3-button"><a href="/venue">Add Venue</a></li>
+            <li class="w3-bar-item w3-button"><a href="/links">Add Surrounds</a></li>
+            <li class="w3-bar-item w3-button"><a href="/help">Help</a></li>
+            <li class="w3-bar-item w3-button"><a href="/logout">Log out</a></li>
+        </ul>
+    </div>
+
+
+    <div class="detail_image">
+        <image src="/static/images/{{ data['image'] }}" />
+    </div>           
+    <div class="detail-name"> {{ data["name"] }}    </div>
+    <div class="detail-location">{{ data["Location"] }}</div>
+    <div class="detail-description">{{ data["Description"] }}</div>
+    <br>
+    <br>
+    {% if not NoExits %}
+    <div class = "HEAD">
+            <h1> Surrounding Buildings </h1>
+    </div>
+    {% endif %}
+    <div class="venue-list">
+        {% for line in links %}
+        <div class="exits">
+            <div class="exits-image">
+                <image src="/static/images/{{ line['Image'] }}" />
+            </div>           
+            <div class="exits-text">
+                <div class="venue-name">
+                    <a href="{{ url_for('show_detail', venue=line['Name'])}}">{{ line["Name"] }}</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+
+    <div class="update_detail">
+        <a href="{{ url_for('edit_venue', venue=data['Name'])}}"> Update Details of {{ data["Name"]}} </a>
+    </div>
+
+
+
+</body>
+</html>

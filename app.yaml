@@ -1,0 +1,2 @@
+runtime: python310 # or another supported version
+default_expiration: "1s"
